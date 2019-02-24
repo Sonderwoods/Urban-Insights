@@ -50,11 +50,11 @@ for objectnr,object in enumerate(objects):
             x,y,z = float(x), float(y), float(z)
             #print "orig vertice [%s]: %s, %s, %s" % (len(vertices)+1,x,y,z)
             vertices.append([x,y,z])
-        elif line[0:2] == "vn":
-            print line
-            x,y,z = line[3:].split(" ")
-            x,y,z = float(x), float(y), float(z)
-            verticenormals.append([x,y,z])
+        #elif line[0:2] == "vn":
+        #    print line
+        #    x,y,z = line[3:].split(" ")
+        #    x,y,z = float(x), float(y), float(z)
+        #    verticenormals.append([x,y,z])
 
 
         elif line[0:2] == "f ":
@@ -68,7 +68,7 @@ for objectnr,object in enumerate(objects):
             fv = []
             
             for facevertice in facevertices:
-                fv.appendint((facevertice.split("//")[0].split("/")[0])-1)
+                fv.append(int(facevertice.split("//")[0].split("/")[0])-1)
 
             for vn in fv:
                 vx, vy, vz = vertices[vn][0], vertices[vn][1], vertices[vn][2]
@@ -109,4 +109,4 @@ for faces in o_faces:
         facestring = facestring + str(vertice) + "//" + str(vertice) + " "
     nf.write(facestring)
 nf.close()
-print "Finished"
+print("Finished")
