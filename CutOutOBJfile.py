@@ -9,7 +9,7 @@ radius = 1500.0
 
 flipXY = True
 moveToOrigin = True
-
+# whaat
 #output lists
 o_vertices = []
 o_faces = []
@@ -43,7 +43,7 @@ print("Parsing through {} obj objects".format(len(objects)))
 
 for objectnr,object in enumerate(objects):
     #print("object {}".format(str(objectnr)))
-    
+
     for linenr,line in enumerate(object.split("\n")):
         if line[0:2] == "v ":
             x,y,z = line[2:].split(" ")
@@ -60,19 +60,19 @@ for objectnr,object in enumerate(objects):
         elif line[0:2] == "f ":
             #print " - facenr %s" % linenr
             facevertices = line.split(" ")[1:]
-            
+
             #facelist = " ,".join(facevertices)
             penalty = []
             temppoints = []
             tempvertices = []
             fv = []
-            
+
             for facevertice in facevertices:
                 fv.append(int(facevertice.split("//")[0].split("/")[0])-1)
 
             for vn in fv:
                 vx, vy, vz = vertices[vn][0], vertices[vn][1], vertices[vn][2]
-                
+
                 distance = dist(cx,cy,vx,vy)
                 if distance > radius:
                     penalty.append(True)
